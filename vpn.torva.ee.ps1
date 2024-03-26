@@ -1,3 +1,15 @@
+if (-NOT ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
+    Start-Process PowerShell -ArgumentList "-ExecutionPolicy Bypass", "-File `"$PSCommandPath`"" -Verb RunAs
+    exit
+}
+
+# Your script's elevated tasks go here
+
+
+# Your script's elevated tasks go here
+Write-Host "Running with elevated privileges"
+
+
 $vpnName = "vpn.torva.ee"
 $destinationPrefix = "172.28.3.0/24"
 
